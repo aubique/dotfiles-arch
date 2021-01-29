@@ -1,0 +1,9 @@
+ranger
+neofetch
+python-pip
+tmux
+tmuxp
+chromium
+rofi
+snapd
+xclip
