@@ -6,4 +6,16 @@ tmuxp
 chromium
 rofi
 snapd
-xclip
+unzip
+tlp
+tlpui
+tlp-rdw
+lolcat
+feh
+powertop
+ctags
+py3status
+yay
+chromium-widevine [aur]
+xorg-xev
+evtest

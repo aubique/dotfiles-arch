@@ -9,11 +9,14 @@
 general {
         colors = true
         interval = 5
+#        color_good = "#ebdbb2"
 #        color_good = "#2AA198"
 #        color_bad = "#586E75"
 #        color_degraded = "#DC322F"
 }
 
+order += "net_rate"
+order += "pomodoro"
 order += "cpu_usage"
 # order += "load"
 order += "disk /"
@@ -22,14 +25,44 @@ order += "wireless _first_"
 # order += "ethernet _first_"
 # order += "ipv6"
 order += "battery all"
+order += "keyboard_layout"
 order += "tztime local"
 
+# py3status modules
+# define keyboard layouts that can be switched between
+keyboard_layout {
+	format = " {layout} "
+	cache_timeout = 15
+        layouts = ['us', 'ru']
+#	color_us = "#ebdbb2"
+}
+
+# define format for net_rate py3status module
+net_rate {
+	interfaces = "wlp1s0"
+	cache_timeout = 5
+	format_no_connection = " ⇓ dl_rate KiB/S "
+	format = " ⇓{down} "
+	unit = "KiB/S"
+	format_value = "[\?min_length=4 {value:.1f} {unit}]"
+}
+
+# pomodoro module
+pomodoro {
+	format = "{mmss}"
+	format_active = "{format}"
+	format_break = "B{breakno} {format}"
+	format_break_stopped = "B{breakno} {format}"
+	format_stopped = "{format}"
+}
+
+# i3status modules
 cpu_usage {
-        format = " cpu  %usage "
+        format = "  %usage "
 }
 
 load {
-        format = " load %1min "
+        format = "  %1min "
         # max_threshold = 0.3
 }
 
@@ -39,9 +72,9 @@ disk "/" {
 }
 
 wireless _first_ {
-#format_up: W: (%quality at %essid, %bitrate / %frequency) %ip
-format_up = ":wifi: on"
-format_down = " no wifi "
+	format_up = " %essid:%quality "
+	#format_up = ":wifi: on"
+	format_down = " no wifi "
 }
 
 ethernet _first_ {
@@ -75,6 +108,6 @@ battery all {
 }
 
 tztime local {
-        # format = "%Y-%m-%d %H:%M:%S"
-        format = " %y|%m|%d CEST %Hh%M"
+	format = " %Y  %m/%d  %H:%M"
+#        format = " %y|%m|%d CEST %Hh%M"
 }
