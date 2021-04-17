@@ -1,4 +1,0 @@
-tor-browser
-chromium-widevine
-ngrok
-cnijfilter2
