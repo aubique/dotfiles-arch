@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"   Filename: ~/.vimrc                                                                                        "
+"   Filename: ~/.config/vim/vimrc                                                                             "
 " Maintainer: Alexandre M. <alexander.matveev@univ-ubs.fr>                                                    "
 "        URL: http://github.com/aubique/dotfiles/                                                             "
 "                                                                                                             "
@@ -13,6 +13,9 @@ syntax on
 set encoding=utf-8
 set number
 set modelines=0
+" Load XDG configuration
+let $MYVIMDIR=expand("<sfile>:h")
+source $MYVIMDIR/xdg.vim
 
 " Make backspace more powerful
 set backspace=indent,eol,start
@@ -118,8 +121,9 @@ au BufRead,BufNewFile *.md, set colorcolumn=75
 " ---------------------------------- "
 filetype off
 filetype plugin indent on
-set rtp+=~/.vim/bundle/Vundle.vim
+"set rtp+=$VIMDOTDIR/.vim/bundle/Vundle.vim
 call vundle#begin()
+let vundle#bundle_dir = expand("$XDG_DATA_HOME/vim/bundle")
 Plugin 'VundleVim/Vundle.vim'
 " Fuzzy Finder
 set rtp+=~/.fzf
@@ -172,6 +176,11 @@ let g:gruvbox_improved_strings=0
 let g:gruvbox_improved_warnings=1
 let g:gruvbox_guisp_fallback = "bg"
 colorscheme gruvbox
+
+" Reset colorscheme to default for SSH
+if $SSH_CONNECTION
+    colorscheme default
+endif
 
 " ---------------------------------- "
 " Configure Spell checking Highlight

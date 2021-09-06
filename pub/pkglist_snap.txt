@@ -2,3 +2,5 @@ intellij-idea-ultimate
 spotify
 postman
 heroku
+twinux
+cawbird

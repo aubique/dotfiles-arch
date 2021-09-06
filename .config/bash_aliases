@@ -1,0 +1,29 @@
+# Get to the real directory
+cdpwdp() {
+    ABS_PWD=$(pwd -P)
+    cd $ABS_PWD
+}
+
+# XDG Variables
+export OPENVPN_PATH=$XDG_CONFIG_HOME/vpn
+export RUNSCRIPTS_PATH=$XDG_CONFIG_HOME/scripts
+
+# XDG Appliance
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+
+# Alias for aubique/dotfiles
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+# Custom Apps
+alias teamv="sudo teamviewer --daemon start && teamviewer && sudo teamviewer --daemon stop"
+alias todol="todoist sync && todoist list --filter 'overdue | today | tomorrow'"
+alias vlc_we="ls -d /home/ubique/vids/arch_JWS/we/* | sed '\$!d' | xargs -I {} vlc \"{}\""
+
+# OpenVPN
+alias dnsleaktest="cat /etc/resolv.conf && echo 'DNS Leak Test' && bash $RUNSCRIPTS_PATH/dnsleaktest.sh"
+#alias ovpn="bash $RUNSCRIPTS_PATH/ovpn_chattr.sh"
+
+# Pass-store
+alias passe="PASS_SUBDIR=ensibs/ PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR/ensibs pass"
+alias passu="PASS_SUBDIR=ubiq/ PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR/ubiq pass"
+alias passm="PASS_SUBDIR=matv/ PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR/matv pass"

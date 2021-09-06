@@ -213,6 +213,5 @@ I also used these articles to create my own dotfiles configuration:
 
 ## TODO
 
-- [x] Merge with `xubuntu` branch
 - [ ] Describe how to set up IntelliJ environment
 - [ ] Update `hwdb` and `chromecast` section
