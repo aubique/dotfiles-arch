@@ -4,4 +4,5 @@ evdev:name:AT Translated Set 2 keyboard:dmi:bvnLENOVO:bvr*:bd*:svnLENOVO:pn20AWS
 
 # English layout ThkinPad BT KT-1255
 #evdev:name:ThinkPad Compact Bluetooth Keyboard with TrackPoint:input:b0005v17EFp6048e0309-*sfw
+#POINTINGSTICK_SENSITIVITY=10
 # KEYBOARD_KEY_56=leftshift

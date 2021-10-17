@@ -12,11 +12,12 @@ That's the repository that helps to maintain my Linux desktop environment. Most 
 
 This repository consists a configuration for various applications most of which need the packages listed below:
 
- 1. SVN system -`git`
+ 1. Version control system - `git`
  2. Based text editor - `vim`
  3. Terminal multiplexer - `tmux`
  4. Session manager - `tmuxp`
  5. Arch User Repository helper - `yay`
+ 6. Window manager - `i3wm`
 
 ## Installation
 
@@ -60,7 +61,7 @@ $ dotfiles remote add origin git@github.com:aubique/dotfiles.git
 
 There are like two ways of fetching your dotfiles on your new machine. The first one is simply clone to your user folder.
 
-> Your alias in `$HOME/.bashrc` should be already set up.
+> Your alias in `bashrc` and `bash_aliases` should be already set up.
 > The commands you can find in section above.
 
 However, in your *$HOME* directory git might find existing config files. So you can clone it to a temporary folder:
@@ -174,7 +175,7 @@ $ setxkbmap -model pc105 -layout us,ru -variant ,, -option grp:alt_shift_toggle 
 
 The actual rules read by udev upon boot is a compiled binary file called `hwdb.bin`, so one will need to compile the configuration files into binary.
 
-Copy `90-fr-t440p.hwdb` from `pub` folder to the local administration directory `/etc/udev/hwdb.d/` then run commands to make the changes take effect immediately:
+Copy hardware database files __(hwdb)__ from `pub` folder to the local administration directory `/etc/udev/hwdb.d/` then run commands to make the changes take effect immediately:
 ```
 # systemd-hwdb update
 # udevadm trigger
@@ -213,5 +214,4 @@ I also used these articles to create my own dotfiles configuration:
 
 ## TODO
 
-- [ ] Describe how to set up IntelliJ environment
-- [ ] Update `hwdb` and `chromecast` section
+- [ ] Update __README__ for `wsl2-ubuntu` branch

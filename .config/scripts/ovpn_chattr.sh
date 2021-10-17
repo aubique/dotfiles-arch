@@ -1,6 +1,6 @@
 #!/bin/bash
 export OPENVPN_PATH=$XDG_CONFIG_HOME/vpn
-OVPN_CONFIG=$XDG_CONFIG_HOME/vpn/client1.ovpn
+#OVPN_CONFIG=$XDG_CONFIG_HOME/vpn/client1.ovpn
 
 ovpn_dns_up () {
     echo 'nameserver 208.67.222.222' | sudo tee /etc/resolv.conf
@@ -25,7 +25,8 @@ sudo mkdir -p /run/openvpn
 ovpn_dns_up
 wait
 
-sudo openvpn --writepid /run/openvpn/vpn.pid --cd /etc/openvpn/ --config $OVPN_CONFIG #--daemon
+#sudo openvpn --writepid /run/openvpn/vpn.pid --cd /etc/openvpn/ --config $OVPN_CONFIG #--daemon
+sudo openvpn --writepid /run/openvpn/vpn.pid --cd /etc/openvpn/ --config $XDG_CONFIG_HOME/vpn/client1.ovpn
 #PID_OVPN=$!
 
 #wait $PID_OVPN

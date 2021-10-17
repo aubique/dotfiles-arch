@@ -21,9 +21,16 @@ alias vlc_we="ls -d /home/ubique/vids/arch_JWS/we/* | sed '\$!d' | xargs -I {} v
 
 # OpenVPN
 alias dnsleaktest="cat /etc/resolv.conf && echo 'DNS Leak Test' && bash $RUNSCRIPTS_PATH/dnsleaktest.sh"
-#alias ovpn="bash $RUNSCRIPTS_PATH/ovpn_chattr.sh"
+alias ovpn="bash $RUNSCRIPTS_PATH/ovpn_chattr.sh"
 
 # Pass-store
+alias passa="PASS_SUBDIR=alex/ PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR/alex pass"
 alias passe="PASS_SUBDIR=ensibs/ PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR/ensibs pass"
+alias passf="PASS_SUBDIR=fam/ PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR/fam pass"
+alias passm="PASS_SUBDIR=misc/ PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR/misc pass"
 alias passu="PASS_SUBDIR=ubiq/ PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR/ubiq pass"
-alias passm="PASS_SUBDIR=matv/ PASSWORD_STORE_DIR=$PASSWORD_STORE_DIR/matv pass"
+
+# Docker aliases
+alias genact="docker run -it --rm svenstaro/genact"
+alias dedockify="docker run -v --rm /var/run/docker.sock:/var/run/docker.sock mrhavens/dedockify"
+source $XDG_CONFIG_HOME/bash_aliases_docker

@@ -68,7 +68,7 @@ use_color=true
 # instead of using /etc/DIR_COLORS.  Try to use the external file
 # first to take advantage of user additions.  Use internal bash
 # globbing instead of external grep binary.
-safe_term=${TERM//[^[:alnum:]]/?}   # sanitize TERM
+safe_term=${TERM//[^[:alnum:]]/?}  # sanitize TERM
 match_lhs=""
 [[ -f ~/.dir_colors   ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
 [[ -f /etc/DIR_COLORS ]] && match_lhs="${match_lhs}$(</etc/DIR_COLORS)"
@@ -94,6 +94,7 @@ if ${use_color} ; then
 	fi
 
 	alias ls='ls -F --color=auto'
+	alias lt='ls --human-readable --size -1 -S --classify --color=auto'
 	alias grep='grep --colour=auto'
 	alias egrep='egrep --colour=auto'
 	alias fgrep='fgrep --colour=auto'
@@ -108,9 +109,9 @@ fi
 
 unset use_color safe_term match_lhs sh
 
-alias cp="cp -i"                          # confirm before overwriting something
-alias df='df -h'                          # human-readable sizes
-alias free='free -m'                      # show sizes in MB
+alias cp="cp -i"           # confirm before overwriting something
+alias df='df -h'           # human-readable sizes
+alias free='free -m'       # show sizes in MB
 alias np='nano -w PKGBUILD'
 alias more=less
 
@@ -123,7 +124,6 @@ complete -cf sudo
 # it regains control.  #65623
 # http://cnswww.cns.cwru.edu/~chet/bash/FAQ (E11)
 shopt -s checkwinsize
-
 shopt -s expand_aliases
 
 # export QT_SELECT=4
@@ -132,9 +132,8 @@ HISTTIMEFORMAT="%F %T "
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
 
-#
-# # ex - archive extractor
-# # usage: ex <file>
+# ex - archive extractor
+# usage: ex <file>
 ex ()
 {
   if [ -f $1 ] ; then
@@ -163,6 +162,9 @@ PS1='\t \[\033[01;32m\]\u\[\033[01;34m\] \w\[\033[01;33m\]$(__git_ps1)\[\033[01;
 
 #----CUSTOM----
 
-# Last cardinal lines for SDKMAN
+# Last cardinal lines for SDKMAN and NVM-sh
 export SDKMAN_DIR="/home/ubique/.sdkman"
 [[ -s "/home/ubique/.sdkman/bin/sdkman-init.sh" ]] && source "/home/ubique/.sdkman/bin/sdkman-init.sh"
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Load NVM
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Load NVM bash_completion
